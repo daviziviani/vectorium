@@ -1,0 +1,573 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+   <script>
+    // Combina userAgent e tamanho da tela
+    function isMobile() {
+        return (
+            (/Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent)) ||
+            (window.innerWidth <= 768)
+        );
+    }
+
+    if (isMobile()) {
+        window.location.replace("mobile.html");
+    }
+</script>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectorium Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+         header nav {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+
+        .nav-button {
+            background: var(--verde-claro);
+            padding: 0.8rem 1.5rem;
+            border-radius: 0px;
+            margin-left: 1rem;
+            transform: scale(0.9);
+            transform-origin: right center;
+            padding-left: 1rem;
+            margin-bottom: 32px;
+
+
+        }
+a.btn.nav-button {
+    padding: 0.5rem 1.2rem;
+    border-radius: 7px;
+    margin-left: 0rem;
+    margin-right: 0rem  ;
+    font-size: 1rem; /* Mantém exatamente o tamanho original */
+    transform: none; /* Importante para manter proporções reais */
+}
+
+
+        .fa-sitemap {
+            color: var(--verde-escuro);
+        }
+
+
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        body {
+            line-height: 1.7;
+            color: #333333;
+            overflow-x: hidden;
+        }
+
+        :root {
+            --azul-profundo: #0A2B42;
+            --verde-escuro: #1F6F78;
+            --verde-claro: #2B959E;
+            --branco1: #FFFFFF;
+            --branco2: #F8FAFC;
+            --branco3: #F1F3F5;
+        }
+
+        h1 { font-size: 3.5rem; font-weight: 700; line-height: 1.2; margin-top:-40px; margin-bottom:-10px; }
+        h2 { font-size: 2.8rem; font-weight: 600; text-align: center; margin-bottom: 3rem; }
+        h3 { font-size: 1.5rem; font-weight: 600; margin-bottom: 1rem; }
+        p { font-size: 1.2rem; font-weight: 400; color: #555; line-height: 1.8; }
+
+        header {
+            background: var(--azul-profundo);
+            padding: 1.5rem 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            font-size: 1.8rem;
+        }
+
+        nav {
+            display: flex;
+            gap: 2.5rem;
+        }
+
+        nav a {
+            color: var(--branco1);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav a:hover {
+            color: var(--verde-claro);
+            transform: translateY(-2px);
+        }
+
+        .bg-branco1 { background: var(--branco1); }
+        .bg-branco2 { background: var(--branco2); }
+        .bg-branco3 { background: var(--branco3); }
+
+        .hero {
+            padding: 12rem 5% 8rem;
+            margin-top: -120px;
+            background: var(--branco2);
+            margin-bottom: -60px;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .hero-image {
+            height: 500px;
+            border-radius: 20px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            box-shadow: 20px 20px 60px rgba(0,0,0,0.08);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .btn {
+            background: var(--verde-escuro);
+            color: var(--branco1);
+            padding: 1.2rem 3rem;
+            border: none;
+            border-radius: 7px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            margin-top: 2rem;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(43,118,126,0.3);
+        }
+
+        .section {
+            padding: 6rem 5%;
+        }
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 2.5rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: var(--branco1);
+            position: relative;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+        }
+
+        .card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            color: var(--branco1);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.4rem;
+        }
+
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metrica-item {
+            text-align: center;
+            padding: 2.5rem;
+            background: var(--branco1);
+            border-radius: 16px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .metrica-numero {
+            font-size: 3rem;
+            color: var(--verde-escuro);
+            font-weight: 700;
+            margin: 1rem 0;
+        }
+
+        .processo {
+            display: flex;
+            justify-content: center;
+            gap: 4rem;
+            flex-wrap: wrap;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .processo-item {
+            text-align: center;
+            flex: 1;
+            min-width: 250px;
+            padding: 2rem;
+            background: var(--branco1);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+
+        .processo-numero {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--branco1);
+            margin: 0 auto 1.5rem;
+        }
+
+        .vantagens {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vantagem-item {
+            padding: 3rem;
+            background: var(--branco1);
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+        }
+
+        .vantagem-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .vantagem-icon {
+            font-size: 2.5rem;
+            color: var(--verde-escuro);
+            margin-bottom: 1.5rem;
+        }
+
+        .cta-final {
+            background: var(--branco3) !important;
+            text-align: center;
+            padding: 6rem 5%;
+        }
+
+        footer {
+            background: var(--azul-profundo);
+            color: var(--branco1);
+            padding: 4rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+        }
+
+        .social-icons a {
+            color: var(--branco1);
+            margin-left: 1.5rem;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-icons a:hover {
+            color: var(--verde-claro);
+            transform: translateY(-3px);
+        }
+
+        @media (max-width: 1024px) {
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+                gap: 3rem;
+            }
+
+            .hero-image {
+                height: 400px;
+                max-width: 600px;
+                margin: 0 auto;
+            }
+        }
+
+        @media (max-width: 768px) {
+            nav {
+                display: none;
+            }
+
+            h1 { font-size: 2.5rem; }
+            h2 { font-size: 2rem; }
+
+            .hero {
+                padding: 8rem 5% 4rem;
+            }
+
+            .metricas {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .scroll-animation {
+            animation: fadeIn 0.6s ease forwards;
+            margin-top: 40px ;
+        }
+/* Adicione isto no final do <style> */
+.hero-image {
+    width: 500px;
+    height: 500px;
+    background: none !important; /* Remove o gradiente anterior */
+}
+
+.hero-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+    transition: transform 0.3s ease;
+}
+
+.hero-image:hover .hero-img {
+    transform: scale(1.05);
+}
+
+/* Responsividade */
+@media (max-width: 1024px) {
+    .hero-image {
+        width: 400px;
+        height: 400px;
+    }
+}
+
+@media (max-width: 768px) {
+    .hero-image {
+        width: 300px;
+        height: 300px;
+    }
+}
+
+footer p {
+    color: var(--branco3); /* ou qualquer outra cor */
+}
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">Vectorium Consulting</div>
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="https://wa.me/5531988322397" class="btn nav-button">Solicitar Orçamento</a>
+
+        </nav>
+    </header>
+
+    <section class="hero bg-branco2">
+        <div class="hero-content scroll-animation">
+            <div>
+                <h1>Pare de perder dinheiro com decisões erradas</h1>
+                <p class="scroll-animation">Consultoria especializada em crescimento empresarial e otimização de processos para resultados tangíveis</p>
+                <button 
+    class="btn scroll-animation" 
+    onclick="window.open('https://wa.me/5531988422397', '_blank')"
+>
+    Solicitar Orçamento Agora
+</button>
+            </div>
+            <div class="hero-image scroll-animation">
+    <!-- COLOQUE SEU LINK DA IMAGEM AQUI ↓ -->
+    <img src="file:///C:/Users/Davi%20Ziviani/Desktop/Untitled%20design%20(2).png" alt="Consultoria Vectorium" class="hero-img">
+</div>
+        </div>
+    </section>
+
+    <section class="section bg-branco1" id="servicos">
+        <h2 class="scroll-animation">Nossos Serviços</h2>
+        <div class="cards">
+            <div class="card scroll-animation" data-number="1">
+                <h3>Estratégia Corporativa</h3>
+                <p>Planejamento estratégico personalizado para crescimento sustentável</p>
+            </div>
+            <div class="card scroll-animation" data-number="2">
+                <h3>Excelência Operacional</h3>
+                <p>Otimização de processos com tecnologia de ponta</p>
+            </div>
+            <div class="card scroll-animation" data-number="3">
+                <h3>Transformação Digital</h3>
+                <p>Implementação de soluções tecnológicas estratégicas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco3">
+        <div class="metricas">
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">15+</div>
+                <h3>Anos de Expertise</h3>
+            </div>
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">99%</div>
+                <h3>Taxa de Sucesso</h3>
+            </div>
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">500+</div>
+                <h3>Projetos Concluídos</h3>
+            </div>
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">40+</div>
+                <h3>Especialistas</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco2">
+        <h2 class="scroll-animation">Metodologia Comprovada</h2>
+        <div class="processo">
+            <div class="processo-item scroll-animation">
+                <div class="processo-numero">1</div>
+                <h3>Diagnóstico Estratégico</h3>
+                <p>Análise detalhada do ecossistema empresarial</p>
+            </div>
+            <div class="processo-item scroll-animation">
+                <div class="processo-numero">2</div>
+                <h3>Plano de Ação</h3>
+                <p>Desenvolvimento de um plano personalizado</p>
+            </div>
+            <div class="processo-item scroll-animation">
+                <div class="processo-numero">3</div>
+                <h3>Implementação</h3>
+                <p>Execução com acompanhamento especializado</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco1">
+        <h2 class="scroll-animation">Vantagens Exclusivas</h2>
+        <div class="vantagens">
+            <div class="vantagem-item scroll-animation">
+                <i class="fas fa-brain vantagem-icon"></i>
+                <h3>Inteligência Setorial</h3>
+                <p>Dados atualizados de mercado e benchmarking</p>
+            </div>
+            <div class="vantagem-item scroll-animation">
+                <i class="fas fa-sitemap vantagem-icon"></i>
+                <h3>Visão Sistêmica</h3>
+                <p>Análise integrada de todos os departamentos</p>
+            </div>
+            <div class="vantagem-item scroll-animation">
+                <i class="fas fa-shield-alt vantagem-icon"></i>
+                <h3>Proteção de Dados</h3>
+                <p>Segurança empresarial de última geração</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="scroll-animation">
+            <h2>Pronto para revolucionar sua empresa?</h2>
+            <p style="margin: 2rem 0 3rem;">Clique no botão abaixo para solicitar o orçamento de nosso serviço </p>
+<button 
+    class="btn scroll-animation" 
+    onclick="window.open('https://wa.me/5531988422397', '_blank')"
+>
+    Solicitar Orçamento Agora
+</button>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="scroll-animation">
+                <h3>Vectorium Consulting</h3>
+
+                <p style="margin-top: 1rem;">© 2024 Todos os direitos reservados</p>
+            </div>
+            <div class="social-icons scroll-animation">
+                <a href="http://linkedin.com/"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/vectorium_consultoria/"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('scroll-animation');
+                }
+            });
+        });
+
+        document.querySelectorAll('.scroll-animation').forEach((el) => {
+            observer.observe(el);
+        });
+
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
