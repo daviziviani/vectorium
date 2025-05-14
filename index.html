@@ -1,0 +1,944 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vectorium Consulting</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.css" />
+    <style>
+        :root {
+            --azul-profundo: #0A2B42;
+            --verde-escuro: #1F6F78;
+            --verde-claro: #2B959E;
+            --branco1: #FFFFFF;
+            --branco2: #F8FAFC;
+            --branco3: #F1F3F5;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            scroll-padding-top: 80px;
+        }
+
+        body {
+            line-height: 1.7;
+            color: #333333;
+            overflow-x: hidden;
+            font-size: 16px;
+        }
+
+        /* Typography */
+        h1 { 
+            font-size: 1.9rem; 
+            font-weight: 700; 
+            line-height: 1.3; 
+            color: var(--azul-profundo);
+            margin-bottom: 1.2rem;
+            max-width: 100%;
+        }
+        
+        h2 { 
+            font-size: 1.8rem; 
+            font-weight: 600; 
+            text-align: center; 
+            margin-bottom: 2rem;
+            color: var(--azul-profundo);
+        }
+        
+        h3 { 
+            font-size: 1.2rem; 
+            font-weight: 600; 
+            margin-bottom: 0.8rem;
+            color: var(--azul-profundo);
+        }
+        
+        p { 
+            font-size: 1rem; 
+            font-weight: 400; 
+            color: #555; 
+            line-height: 1.6;
+        }
+
+        .hero-paragraph {
+            font-size: 1.15rem;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            color: #444;
+        }
+
+        /* Header */
+        header {
+            background: var(--azul-profundo);
+            padding: 0 5%;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-weight: 700;
+            letter-spacing: -0.5px;
+            color: #ffffff;
+            font-size: 1.5rem;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+
+        nav {
+            display: none;
+        }
+
+        nav a {
+            color: var(--branco1);
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        nav a:hover {
+            color: var(--verde-claro);
+            transform: translateY(-2px);
+        }
+
+        .nav-button {
+            background: var(--verde-claro);
+            padding: 0.5rem 1.2rem;
+            border-radius: 7px;
+            margin-left: 0;
+            font-size: 1rem;
+            transform: none;
+        }
+
+        .mobile-menu-button {
+            display: block;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .mobile-menu {
+            display: none;
+            position: absolute;
+            top: 70px;
+            left: 0;
+            width: 100%;
+            background: var(--azul-profundo);
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            flex-direction: column;
+            gap: 0.5rem;
+            z-index: 1000;
+        }
+
+        .mobile-menu a {
+            color: var(--branco1);
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.8rem 1rem;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+            display: block;
+        }
+
+        .mobile-menu a:hover {
+            background-color: rgba(255,255,255,0.1);
+        }
+
+        .mobile-menu a.btn {
+            background: var(--verde-claro);
+            color: white;
+            text-align: center;
+            margin-top: 0.5rem;
+            padding: 0.8rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 7rem 5% 4rem;
+            background: var(--branco2);
+            position: relative;
+        }
+
+        .hero-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            gap: 2.5rem;
+            align-items: center;
+            text-align: center;
+        }
+
+        .hero-image {
+            width: 280px;
+            height: 280px;
+            border-radius: 20px;
+            background: none !important;
+            box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .hero-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            border-radius: 20px;
+            transition: transform 0.5s ease;
+        }
+
+        .hero-image:hover .hero-img {
+            transform: scale(1.05);
+        }
+
+        /* Buttons */
+        .btn {
+            background: var(--verde-escuro);
+            color: var(--branco1);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 10px;
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+            box-shadow: 0 4px 10px rgba(31,111,120,0.3);
+        }
+
+        .btn:hover {
+            background: var(--verde-claro);
+            transform: translateY(-3px);
+            box-shadow: 0 6px 15px rgba(43,118,126,0.4);
+        }
+
+        .hero-btn {
+            width: 90%;
+            padding: 1.2rem 1rem;
+            margin-top: 0.5rem;
+            font-size: 1.1rem;
+            border-radius: 10px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+        }
+
+        /* Sections */
+        .section {
+            padding: 4rem 5%;
+        }
+
+        .bg-branco1 { background: var(--branco1); }
+        .bg-branco2 { background: var(--branco2); }
+        .bg-branco3 { background: var(--branco3); }
+
+        /* Cards */
+        .cards {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .card {
+            padding: 2rem 1.5rem;
+            border: 1px solid rgba(0,0,0,0.08);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+            background: var(--branco1);
+            position: relative;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .card::before {
+            content: attr(data-number);
+            position: absolute;
+            top: -15px;
+            left: -15px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            color: var(--branco1);
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 1.2rem;
+            box-shadow: 0 5px 15px rgba(31,111,120,0.3);
+        }
+
+        /* Metrics */
+        .metricas {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1.5rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .metrica-item {
+            text-align: center;
+            padding: 1.5rem;
+            background: var(--branco1);
+            border-radius: 16px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .metrica-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .metrica-numero {
+            font-size: 2.5rem;
+            color: var(--verde-escuro);
+            font-weight: 700;
+            margin: 0.5rem 0;
+        }
+
+        /* Process */
+        .processo {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .processo-item {
+            text-align: center;
+            padding: 2rem;
+            background: var(--branco1);
+            border-radius: 1.5rem;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+            transition: all 0.3s ease;
+        }
+
+        .processo-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .processo-numero {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--branco1);
+            margin: 0 auto 1.5rem;
+            box-shadow: 0 5px 15px rgba(31,111,120,0.3);
+        }
+
+        /* Advantages */
+        .vantagens {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .vantagem-item {
+            padding: 2rem;
+            background: var(--branco1);
+            border-radius: 16px;
+            text-align: center;
+            transition: all 0.3s ease;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.05);
+        }
+
+        .vantagem-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .vantagem-icon {
+            font-size: 2.5rem;
+            color: var(--verde-escuro);
+            margin-bottom: 1.5rem;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            display: inline-block;
+        }
+
+        .fa-sitemap {
+            color: var(--verde-escuro);
+        }
+
+        /* CTA */
+        .cta-final {
+            background: var(--branco3) !important;
+            text-align: center;
+            padding: 4rem 5%;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--azul-profundo);
+            color: var(--branco1);
+            padding: 3rem 5%;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            gap: 1.5rem;
+        }
+
+        .social-icons {
+            display: flex;
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+
+        .social-icons a {
+            color: var(--branco1);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .social-icons a:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.3);
+        }
+
+        footer p {
+            color: var(--branco3);
+        }
+
+        /* Animations */
+        .scroll-animation {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-animation.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Back to top button */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            cursor: pointer;
+            opacity: 0;
+            transition: all 0.3s ease;
+            z-index: 99;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            text-decoration: none;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+        }
+
+        .back-to-top:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+        }
+
+        /* Section dividers */
+        .divider {
+            height: 100px;
+            overflow: hidden;
+            position: relative;
+            margin-top: -1px;
+        }
+
+        .divider-inner {
+            position: absolute;
+            width: 100%;
+            height: 100px;
+            background: var(--branco1);
+            transform: skewY(-3deg);
+            transform-origin: top right;
+        }
+
+        .divider-bottom .divider-inner {
+            transform: skewY(3deg);
+            transform-origin: top left;
+        }
+
+        /* Responsive Styles */
+        @media (min-width: 768px) {
+            h1 { 
+                font-size: 2.8rem; 
+            }
+            
+            h2 { 
+                font-size: 2.5rem; 
+                margin-bottom: 3rem;
+            }
+            
+            h3 { 
+                font-size: 1.5rem; 
+                margin-bottom: 1rem;
+            }
+            
+            p { 
+                font-size: 1.1rem; 
+                line-height: 1.8;
+            }
+
+            .hero-paragraph {
+                font-size: 1.3rem;
+                line-height: 1.7;
+            }
+
+            .mobile-menu-button {
+                display: none;
+            }
+
+            nav {
+                display: flex;
+                gap: 2.5rem;
+                align-items: center;
+            }
+
+            /* Ajuste do botão no cabeçalho para desktop */
+            .nav-button {
+                padding: 0.5rem 1.5rem; /* Reduzido o padding vertical */
+                border-radius: 10px;
+                margin-left: 1.5rem;
+                font-size: 1.05rem;
+                background: linear-gradient(45deg, var(--verde-escuro), var(--verde-claro));
+                box-shadow: 0 4px 10px rgba(31,111,120,0.3);
+            }
+
+            .nav-button:hover {
+                transform: translateY(-3px);
+                box-shadow: 0 6px 15px rgba(43,118,126,0.4);
+            }
+
+            .hero-content {
+                flex-direction: row;
+                text-align: left;
+                gap: 4rem; /* Espaço entre o texto e a imagem */
+                justify-content: space-between;
+                align-items: center;
+            }
+
+            .hero-content > div:first-child {
+                flex: 1;
+                padding-right: 1rem; /* Margem reduzida à direita do texto */
+                max-width: 55%;
+            }
+
+            .hero {
+                padding: 10rem 5% 6rem;
+            }
+
+            .hero-image {
+                width: 400px;
+                height: 400px;
+                flex-shrink: 0; /* Impede que a imagem encolha */
+            }
+
+            .hero-btn {
+                width: auto;
+                padding: 1.2rem 3rem;
+            }
+
+            .cards, .processo, .vantagens {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .metricas {
+                grid-template-columns: repeat(4, 1fr);
+            }
+
+            .section {
+                padding: 6rem 5%;
+            }
+
+            .footer-content {
+                flex-direction: row;
+                justify-content: space-between;
+                text-align: left;
+            }
+        }
+
+        @media (min-width: 1024px) {
+            /* Ajuste para garantir que a imagem seja perfeitamente quadrada */
+            .hero-image {
+                width: 450px;
+                height: 450px;
+                margin: 0;
+                border-radius: 25px;
+            }
+
+            .hero-content {
+                padding: 0 1rem; /* Reduzido o padding do conteúdo */
+                max-width: 1100px; /* Limitando a largura máxima */
+                margin: 0 auto;
+            }
+
+            .hero-content > div:first-child {
+                padding-right: 1rem; /* Margem reduzida para desktop */
+                padding-left: 0; /* Removendo padding à esquerda */
+            }
+
+            .container {
+                padding: 0 1rem; /* Reduzido o padding do container */
+            }
+
+            /* Ajuste adicional para o botão do cabeçalho em telas maiores */
+            .nav-button {
+                margin-left: 2.5rem; /* Aumentado para afastar mais da margem */
+                padding: 0.4rem 1.5rem; /* Reduzido ainda mais o padding vertical */
+            }
+
+            header {
+                padding: 0 8%; /* Aumentado o padding do cabeçalho */
+            }
+        }
+
+        @media (min-width: 1280px) {
+            .hero-image {
+                width: 480px; /* Ligeiramente menor que antes */
+                height: 480px;
+            }
+            
+            .hero-content {
+                max-width: 1200px;
+                gap: 3rem; /* Reduzido o espaço entre texto e imagem */
+            }
+            
+            header {
+                padding: 0 10%; /* Ainda mais padding no cabeçalho */
+            }
+            
+            .nav-button {
+                margin-left: 3rem; /* Ainda mais afastado da margem */
+                padding: 0.35rem 1.5rem; /* Reduzido ainda mais o padding vertical */
+                font-size: 1rem;
+            }
+        }
+
+        @media (min-width: 1440px) {
+            header {
+                padding: 0 12%; /* Padding ainda maior para telas extra grandes */
+            }
+            
+            .nav-button {
+                margin-left: 3.5rem; /* Ainda mais afastado da margem */
+                padding: 0.3rem 1.5rem; /* Padding vertical mínimo */
+            }
+        }
+
+        /* Loading animation */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: var(--azul-profundo);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+
+        .loading-spinner {
+            width: 50px;
+            height: 50px;
+            border: 5px solid rgba(255,255,255,0.3);
+            border-radius: 50%;
+            border-top-color: var(--verde-claro);
+            animation: spin 1s ease-in-out infinite;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        .loading-overlay.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-overlay" id="loading-overlay">
+        <div class="loading-spinner"></div>
+    </div>
+
+    <header>
+        <div class="logo">Vectorium Consulting</div>
+        <nav>
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="https://wa.me/5531988322397" class="btn nav-button">Solicitar Orçamento</a>
+        </nav>
+        <button class="mobile-menu-button" id="mobile-menu-button" aria-label="Menu">
+            <i class="fas fa-bars"></i>
+        </button>
+        <div class="mobile-menu" id="mobile-menu">
+            <a href="#servicos">Serviços</a>
+            <a href="#sobre">Sobre</a>
+            <a href="#contato">Contato</a>
+            <a href="https://wa.me/5531988322397" class="btn">Solicitar Orçamento</a>
+        </div>
+    </header>
+
+    <section class="hero bg-branco2">
+        <div class="hero-content">
+            <div class="scroll-animation">
+                <h1>Pare de perder dinheiro com decisões erradas</h1>
+                <p class="hero-paragraph scroll-animation">Consultoria especializada em crescimento empresarial e otimização de processos para resultados tangíveis. Transforme sua empresa com estratégias comprovadas.</p>
+                <a href="https://wa.me/5531988422397" class="btn hero-btn scroll-animation" target="_blank">
+                    Solicitar Orçamento Agora
+                </a>
+            </div>
+            <div class="hero-image scroll-animation">
+                <img src="https://i.imgur.com/tNPbduk.png" alt="Consultoria Vectorium" class="hero-img">
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco1" id="servicos">
+        <h2 class="scroll-animation">Nossos Serviços</h2>
+        <div class="cards">
+            <div class="card scroll-animation" data-number="1">
+                <h3>Estratégia Corporativa</h3>
+                <p>Planejamento estratégico personalizado para crescimento sustentável</p>
+            </div>
+            <div class="card scroll-animation" data-number="2">
+                <h3>Excelência Operacional</h3>
+                <p>Otimização de processos com tecnologia de ponta</p>
+            </div>
+            <div class="card scroll-animation" data-number="3">
+                <h3>Transformação Digital</h3>
+                <p>Implementação de soluções tecnológicas estratégicas</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco3">
+        <div class="metricas">
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">15+</div>
+                <h3>Anos de Expertise</h3>
+            </div>
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">99%</div>
+                <h3>Taxa de Sucesso</h3>
+            </div>
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">500+</div>
+                <h3>Projetos Concluídos</h3>
+            </div>
+            <div class="metrica-item scroll-animation">
+                <div class="metrica-numero">40+</div>
+                <h3>Especialistas</h3>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco2" id="sobre">
+        <h2 class="scroll-animation">Metodologia Comprovada</h2>
+        <div class="processo">
+            <div class="processo-item scroll-animation">
+                <div class="processo-numero">1</div>
+                <h3>Diagnóstico Estratégico</h3>
+                <p>Análise detalhada do ecossistema empresarial</p>
+            </div>
+            <div class="processo-item scroll-animation">
+                <div class="processo-numero">2</div>
+                <h3>Plano de Ação</h3>
+                <p>Desenvolvimento de um plano personalizado</p>
+            </div>
+            <div class="processo-item scroll-animation">
+                <div class="processo-numero">3</div>
+                <h3>Implementação</h3>
+                <p>Execução com acompanhamento especializado</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="section bg-branco1">
+        <h2 class="scroll-animation">Vantagens Exclusivas</h2>
+        <div class="vantagens">
+            <div class="vantagem-item scroll-animation">
+                <i class="fas fa-brain vantagem-icon"></i>
+                <h3>Inteligência Setorial</h3>
+                <p>Dados atualizados de mercado e benchmarking</p>
+            </div>
+            <div class="vantagem-item scroll-animation">
+                <i class="fas fa-sitemap vantagem-icon"></i>
+                <h3>Visão Sistêmica</h3>
+                <p>Análise integrada de todos os departamentos</p>
+            </div>
+            <div class="vantagem-item scroll-animation">
+                <i class="fas fa-shield-alt vantagem-icon"></i>
+                <h3>Proteção de Dados</h3>
+                <p>Segurança empresarial de última geração</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="cta-final">
+        <div class="scroll-animation">
+            <h2>Pronto para revolucionar sua empresa?</h2>
+            <p style="margin: 1.5rem 0 2rem;">Clique no botão abaixo para solicitar o orçamento de nosso serviço</p>
+            <a href="https://wa.me/5531988422397" class="btn hero-btn scroll-animation" target="_blank">
+                Solicitar Orçamento Agora
+            </a>
+        </div>
+    </section>
+
+    <footer id="contato">
+        <div class="footer-content">
+            <div class="scroll-animation">
+                <h3>Vectorium Consulting</h3>
+                <p style="margin-top: 0.5rem;">© 2024 Todos os direitos reservados</p>
+            </div>
+            <div class="social-icons scroll-animation">
+                <a href="http://linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin"></i></a>
+                <a href="https://www.instagram.com/vectorium_consultoria/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <a href="#" class="back-to-top" id="back-to-top" aria-label="Voltar ao topo">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <script>
+        // Remove loading screen when page is loaded
+        window.addEventListener('load', function() {
+            setTimeout(function() {
+                document.getElementById('loading-overlay').classList.add('hidden');
+            }, 500);
+        });
+
+        // Mobile menu toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const mobileMenu = document.getElementById('mobile-menu');
+            
+            mobileMenuButton.addEventListener('click', function() {
+                mobileMenu.style.display = mobileMenu.style.display === 'flex' ? 'none' : 'flex';
+            });
+            
+            // Scroll animation
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            document.querySelectorAll('.scroll-animation').forEach((el) => {
+                observer.observe(el);
+            });
+            
+            // Smooth scrolling for anchor links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    if (this.getAttribute('href') === '#') return;
+                    
+                    e.preventDefault();
+                    
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        const headerOffset = 80;
+                        const elementPosition = target.getBoundingClientRect().top;
+                        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+                        
+                        window.scrollTo({
+                            top: offsetPosition,
+                            behavior: 'smooth'
+                        });
+                        
+                        // Close mobile menu if open
+                        mobileMenu.style.display = 'none';
+                    }
+                });
+            });
+
+            // Back to top button
+            const backToTopButton = document.getElementById('back-to-top');
+            
+            window.addEventListener('scroll', function() {
+                if (window.pageYOffset > 300) {
+                    backToTopButton.classList.add('visible');
+                } else {
+                    backToTopButton.classList.remove('visible');
+                }
+            });
+            
+            backToTopButton.addEventListener('click', function(e) {
+                e.preventDefault();
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
+            });
+        });
+    </script>
+</body>
+</html>
